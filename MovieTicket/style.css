@@ -1,0 +1,82 @@
+.MainContainer{
+    height: 766px;
+}
+
+.main{
+    width: 350px;
+    height: 600px;
+    border: 1px solid rgb(227, 224, 224);
+    border-radius: 10px;
+    box-shadow:5px 5px 5px rgb(227, 224, 224);
+}
+.seats{
+    width: 35px;
+    color: rgb(247, 243, 243);
+    border: none;
+    background-color: inherit;
+}
+
+.header{
+    height: 30%;
+    width: 100%;
+    border-radius: 10px;
+    background-image:url(./bgimg.jpeg);
+    background-size: 350px 100%;
+}
+
+.header::after{
+    background-color: transparent rgb(200, 197, 197);
+}
+
+.back{
+    width: 30px;
+}
+
+.HeadContainer{
+    height: 140px;
+}
+
+li{
+    list-style-type:none;
+}
+
+.screen{
+    width: 80%;
+    border-bottom: 2px solid black;
+    border-radius: 20px;
+}
+
+.footer{
+    height: 12%;
+
+}
+
+.footDetails{
+    height: 100%;
+    border-bottom-left-radius: 10%;
+    width: 25%;
+    background-color: blueviolet;
+}
+
+.footContent{
+    width: 75%;
+    border-bottom-right-radius: 10%;
+    background-color: rgb(157, 77, 231);
+}
+
+.button{
+    width: 75px;
+    height: 40px;
+    background-color: whitesmoke;
+    border-radius: 25%;
+}
+
+.button:hover{
+    background-color: whitesmoke;
+}
+
+@media screen and (max-width:400px) {
+    .main{
+        width: 320px;
+    }
+}
