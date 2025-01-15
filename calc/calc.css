@@ -1,0 +1,73 @@
+body {
+  height: 100vh;
+  width: 100%;
+}
+
+.screen {
+  height: 100%;
+  width: 100%;
+}
+
+.main {
+  height: fit-content;
+  width: min-content;
+  border: 2px solid black;
+  border-radius: 20px;
+  background-color: beige;
+}
+
+.ContainerHead {
+  background-color: rgb(171, 171, 147);
+  margin-top: 25px;
+  border: 2px solid black;
+  box-shadow: 2px 2px 5px rgb(129, 124, 124);
+  border-radius: 20px;
+  width: 100%;
+  height: 150px;
+}
+
+#result {
+  height: 100px;
+  width: 100%;
+  background-color: rgb(171, 171, 147);
+  border-radius: 20px;
+  text-align: right;
+  border: none;
+  font-size: 30px;
+}
+
+.ButtonsContainer {
+  grid-template-columns: 50px 50px 50px 50px;
+  gap: 20px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.ButtonsContainer input {
+  border: 1px solid grey;
+  border-radius: 20px;
+  background-color: rgb(3, 225, 225);
+  box-shadow: 2px 2px 2px rgb(94, 143, 143);
+  box-sizing: content-box;
+}
+
+.ButtonsContainer input:hover {
+  background-color: black;
+  color: white;
+}
+
+
+@media screen and (max-width:320px) {
+    .main{
+        width: 80%;
+    }
+
+    .ButtonsContainer {
+        grid-template-columns: 43px 43px 43px 43px;
+        gap: 5px;
+        margin-top: 10px;
+        padding: 5px;
+    }
+
+    
+}
