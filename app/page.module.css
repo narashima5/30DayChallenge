@@ -1,0 +1,62 @@
+.main{
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+.inputs{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2rem;
+}
+
+.input{
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.btn{
+  width: 150px;
+  height: 50px;
+  border: 2px solid red;
+  background-color: red;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.memeContainer{
+  border: 2px solid black;
+  width: 400px;
+  height: 400px;
+  color: red;
+  position: relative;
+}
+
+.img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.top{
+  position: absolute;
+  top: 0;
+  left: 10%;
+}
+
+.bottom{
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+}
