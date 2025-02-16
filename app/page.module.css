@@ -1,62 +1,76 @@
 .main{
-    height: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-}
-
-
-.inputs{
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  font-size: 2rem;
 }
 
-.input{
-  width: 300px;
+.selectContainer{
+  display: flex;
+  gap: 0.2rem;
+}
+
+.urlinput{
   height: 30px;
-  text-align: center;
+  width: 250px;
   border-radius: 20px;
 }
 
 .btn{
-  width: 150px;
   height: 50px;
-  border: 2px solid red;
-  background-color: red;
+  width: 150px;
   border-radius: 20px;
-  cursor: pointer;
+  background-color: rgb(29, 231, 29);
 }
 
-.memeContainer{
+.selection , .selection option, .fill_input{
+  border-radius: 20px;
   border: 2px solid black;
-  width: 400px;
-  height: 400px;
-  color: red;
-  position: relative;
+  width: 160px;
+  height: 50px;
+  text-align: center;
+  font-weight: bolder;
 }
 
-.img{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+.table{
+  border: 1px solid black;
+  width: 80%;
+  background-color:black;
+  text-align: center;
 }
 
-.top{
-  position: absolute;
-  top: 0;
-  left: 10%;
+.table th{
+  border: 1px solid black;
+  background-color: aqua;
 }
 
-.bottom{
-  position: absolute;
-  bottom: 0;
-  left: 10%;
+.table td{
+    background-color: cornsilk;
+    border: 1px solid black;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid black;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media screen and (max-width:321px) {
+  .selection , .fill_input{
+    width: 155px;
+    height: 50px;
+  }
+  .selectContainer{
+    gap: 0.1rem;
+  }
 }
