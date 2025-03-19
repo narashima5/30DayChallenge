@@ -1,55 +1,73 @@
-.main{
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(90deg, #07eebc, #0bee6a);
 }
 
-.form{
-  height: 500px;
-  width: 300px;
-  border: 2px solid grey;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  background-color: #fff;
-  box-shadow: 0 2px 15px 6px #493636 ;
+.card{
+    width: 30%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.cardContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.input{
+    text-align: center;
+    font-size: large;
+    width: 100%;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: #fff0f0;
+}
+
+.button{
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+    background-color: #07eebc;
+    color: white;
+    font-size: large;
+    cursor: pointer;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid black;
+    width: 10px;
+    height: 10px;
+    animation: spin 2s linear infinite;
+  }
   
-}
-.title{
-  font-size: x-large;
-  margin-top: 10px;
-  color: #a30a5d;
-  text-shadow: 1px -1px 0px red;
-}
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
-.inputs{
-  display: flex;
-  flex-direction: column;
-  width: 75%;
-  height: fit-content;
-  align-items: start;
-}
+  @media screen and (max-width: 500px){
+    .card{
+        width: 75%;
+    }
+    
+  }
 
-.inpt{
-  width: 100%;
-  height: 50px;
-  border-radius: 20px;
-  margin-top: .5rem;
-  text-align: center;
-}
-
-.label{
-  margin-top: 1rem;
-}
-
-.btn{
-  width: 60%;
-  height: 50px;
-  border-radius: 20px;
-  border: 2px solid red;
-  color: white;
-  background-color: red;
-}
+  @media screen and (max-width: 800px) and (min-width: 500px){
+    .card{
+        width: 45%;
+    }
+    
+  }

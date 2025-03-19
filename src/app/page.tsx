@@ -1,83 +1,73 @@
 'use client'
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useState } from "react";
 import styles from "./page.module.css";
-import { useRouter } from "next/navigation";
 
+interface GenderData {
+  name: string,
+  gender: string,
+  probability: number,
+  count: number
+}
 
 export default function Home() {
+  const [name, setName] = useState<string>("");
+  const [prediction, setPrediction] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState<GenderData>();
 
-  const [number, setNumber] = useState('');
-  const [pswd, setPswd] = useState('');
-  const [cpswd, setCpswd] = useState('');
-  const router = useRouter();
-  const [phone,setPhone] = useState(false);
-  const [pass ,setPass]= useState(false);
-  const [cPass,setCPass] = useState(false);
+  const handlePrediction = () => {
+    setPrediction("");
+    setLoading(true);
+    fetch(`https://api.genderapi.io/api/?name=${name}&key=67cdb1ada38315664282b08c`)
+      .then((res) => {
+        return (res.json());
+      })
+      .then((data) => {
+        setData(data)
+        setLoading(false);
+        setPrediction(data.gender); 
+      })
+    }
 
-  const handleInputNumber = (event: ChangeEvent<HTMLInputElement>) => {
-    setNumber(event.target.value);
+  const handleReset = () => {
+    setName("");
+    setPrediction("");
+    setData(undefined);
     
   }
-
-  const handleInputpswd = (event: ChangeEvent<HTMLInputElement>) => {
-    setPswd(event.target.value);
-    
-  }
-
-  const handleInputCPswd = (event: ChangeEvent<HTMLInputElement>) => {
-    setCpswd(event.target.value);
-    
-  }
-
-  const handleBtnClick = () => {
-    if((number.length) !== 10){
-      alert("Enter valid Phone Number");
-    }else{
-      setPhone(true);
-    }
-
-    if((pswd.length) < 6){
-      alert("Length of Password should be 6 or greater than 6");
-    }else{
-      setPass(true);
-    }
-
-    if(cpswd !== pswd){
-      alert("Password doesn't match");
-    }else{
-      setCPass(true);
-    }
-  }
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    if(phone && pass && cPass){
-      alert('Successfully Registered!!')
-      router.push('/login');
-    }
-  }
-
-
   return (
-    <div className={styles.main}>
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <header className={styles.title}>
-          Registration Form
-        </header>
-        <div className={styles.inputs}>
-          <label htmlFor="Uname" className={styles.label}>PHONE NUMBER:</label>
-          <input type="text" name="Uname" onChange={handleInputNumber} id="Uname" placeholder="Enter Your Number" className={styles.inpt}/>
 
-          <label htmlFor="email" className={styles.label}>PASSWORD:</label>
-          <input type="password" name="email" onChange={handleInputpswd} id="email" placeholder="Enter Your Password" className={styles.inpt}/>
 
-          <label htmlFor="pswd" className={styles.label}>CONFIRM PASSWORD:</label>
-          <input type="password" name="pswd" onChange={handleInputCPswd} id="pswd" placeholder="Enter Your Password Again" className={styles.inpt}/>
+    <div className={styles.container}>
 
+      <div className={styles.card} style={{
+        backgroundColor: data ? (data.gender === "male" ? "#3276f5" : data.gender === "female" ? "pink" : data.gender === "null" ? "red" : "white") : "white"
+      }}>
+
+        <div className={styles.cardContent}>
+          <h1>Predict Gender By Name</h1>
+          <p>Using an external API to predict the gender from given name</p>
+          <input
+            type="text"
+            onChange={(e) => {
+              setName(e.target.value);
+              if (!(e.target.value)) {
+                setPrediction("");
+                setData(undefined)
+              }
+            }}
+            placeholder="Enter A Name To Predict"
+            className={styles.input}
+          />
+          {loading ? (
+            <div className={styles.loader}></div>) : null
+            }
+          {(prediction !== "null" && prediction !== "" && name) ? <p>{`${name} is ${prediction}`}</p>:null}
+          {(data &&data.gender === "null") ? <p>{`${name} is not valid`}</p> : null}
+          <button className={styles.button} onClick={handlePrediction}>Predict</button>
+          <button className={styles.button} onClick={handleReset}>Reset</button>
         </div>
-
-        <button type="submit" onClick={handleBtnClick} className={styles.btn}>Register</button>
-      </form>
+      </div>
     </div>
   );
 }
